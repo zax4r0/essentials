@@ -37,6 +37,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.sameerasw.essentials.R
+import com.sameerasw.essentials.ui.activities.NetworkModeSettingsActivity
 import com.sameerasw.essentials.ui.components.sliders.ConfigSliderItem
 import com.sameerasw.essentials.ui.core.cards.IconToggleItem
 import com.sameerasw.essentials.ui.core.containers.RoundedCardContainer
@@ -335,6 +336,30 @@ fun NetworksSettingsUI(
                     }
                 },
                 modifier = Modifier.highlight(highlightSetting == "sim_names_item"),
+            )
+
+            IconToggleItem(
+                title = stringResource(R.string.tile_data_sim),
+                description = "Switch default mobile data SIM",
+                iconRes = R.drawable.rounded_android_cell_dual_4_bar_24,
+                showToggle = false,
+                onClick = {
+                    val intent = Intent(context, NetworkModeSettingsActivity::class.java)
+                    context.startActivity(intent)
+                },
+                modifier = Modifier.highlight(highlightSetting == "data_sim_item"),
+            )
+
+            IconToggleItem(
+                title = stringResource(R.string.tile_network_mode),
+                description = "Change preferred network type (5G/4G/3G)",
+                iconRes = R.drawable.rounded_signal_cellular_alt_24,
+                showToggle = false,
+                onClick = {
+                    val intent = Intent(context, NetworkModeSettingsActivity::class.java)
+                    context.startActivity(intent)
+                },
+                modifier = Modifier.highlight(highlightSetting == "network_mode_item"),
             )
         }
     }
